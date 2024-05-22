@@ -3,16 +3,38 @@
   "display": "Next.js",
   "extends": "./base.json",
   "compilerOptions": {
-    "plugins": [{ "name": "next" }],
-    "allowJs": true,
-    "declaration": false,
-    "declarationMap": false,
-    "incremental": true,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
-    "noEmit": true,
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "es6",
+      "es2017",
+      "esnext.asynciterable"
+    ],
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "target": "es5"
-  }
+    "baseUrl": "."
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./src/**/*.ts"
+  ]
 }

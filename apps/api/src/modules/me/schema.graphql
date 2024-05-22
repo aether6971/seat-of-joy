@@ -1,0 +1,12 @@
+#import User from "../schema.graphql"
+#import Error from "../schema.graphql"
+#import UResponseType from "../schema.graphql"
+
+type meResponse {
+  response: UResponseType!
+  user: [User!]
+}
+
+type Query {
+  me: meResponse
+}

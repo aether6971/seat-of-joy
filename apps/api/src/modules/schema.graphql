@@ -1,0 +1,19 @@
+type Error {
+  code: Int
+  path: String!
+  message: String!
+}
+
+type User {
+  email: String
+  username: String
+}
+
+type ResponseType {
+  response: UResponseType!
+}
+
+type UResponseType {
+  success: Boolean!
+  errors: [Error!]
+}

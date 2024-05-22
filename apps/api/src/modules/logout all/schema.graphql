@@ -1,0 +1,5 @@
+#import ResponseType from "../schema.graphql"
+
+type Mutation {
+  logoutAll: ResponseType!
+}

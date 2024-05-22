@@ -1,15 +1,10 @@
-import { pgTable, serial, text, varchar } from "drizzle-orm/pg-core";
-import { drizzle } from "drizzle-orm/node-postgres";
-import { Client } from "pg";
+import "dotenv/config";
+import { __prod__ } from "./constants";
+import { createServer } from "./server";
 
-(async() => {
-    const client = new Client({
-    host: process.env.DB_HOST!,
-    port: Number(process.env.DB_PORT!),
-    user: process.env.DB_USERNAME!,
-    password: process.env.DB_PASSWORD!,
-    database: process.env.DB_NAME!,
+(async () => {
+  const { app } = await createServer();
+  app.listen(4000, () => {
+    console.log("Server running at http://localhost:4000/graphql 🚀");
   });
-  await client.connect();
-  const db = drizzle(client);
-})()
+})();

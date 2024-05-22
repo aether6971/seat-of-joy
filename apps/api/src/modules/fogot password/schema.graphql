@@ -1,0 +1,7 @@
+#import Error from "../schema.graphql"
+#import ResponseType from "../schema.graphql"
+
+type Mutation {
+  sendForgotPasswordEmail(email: String!): ResponseType!
+  forgotPasswordChange(newPassword: String!, key: String!): ResponseType!
+}
