@@ -2,7 +2,6 @@ routes:
 Home
 Campagains*
 product Page
-Review Page
 About
 Cart
 
@@ -20,12 +19,11 @@ Pages Info:
 2) Product Page:
         Features of product in a verticall with image explanation
         lastly have a add to cart option
+	review container with scrool option of 10 reviews
 3)About:
         Bullshit about founders and company
 4) Campagains:
         Future Project
-5) Review Page:
-        Future project
 
 6)Cart:
         a simple mock up of cart
