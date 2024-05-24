@@ -9,8 +9,13 @@ Cart
 Pages Info:
 
 1) Home:
+	NavBar with image background ad reference
         Awwaraness content container -1
         Product contens with link to product page -2
+	Both containers allign 
+	affiliation logos
+	sliding review content
+	about Team with link
 
 2) Product Page:
         Features of product in a verticall with image explanation
@@ -26,7 +31,9 @@ Pages Info:
         a simple mock up of cart
 
 
+NavBar and Footer included
 * Future Projects
 
 
 
+Reference link: https://www.behance.net/gallery/115400649/Orluna-Branding-Web-Design/modules/658565001
