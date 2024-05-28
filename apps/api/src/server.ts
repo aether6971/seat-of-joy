@@ -113,7 +113,7 @@ export const createServer = async (): Promise<{
         cookie: {
           httpOnly: true,
           secure: __prod__,
-          maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+          maxAge: 1000 * 60 * 60 * 2, // 2 hours
         },
       })
     )
@@ -150,6 +150,7 @@ export const createServer = async (): Promise<{
         .update(users)
         .set({ verified: true })
         .where(eq(users.id, userId));
+      await redis.del(`${redisEmailVerifyPrefix}${id}`);
       res.send("Email Verified");
     } else {
       res.status(500);

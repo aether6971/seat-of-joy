@@ -14,9 +14,4 @@ export const removeAllSessions = async (userId: string, redis: Redis) => {
     promises.push(redis.del(`${redisSessionPrefix}${sessionIds[i]}`));
   }
   await Promise.all(promises);
-  const keys = await redis.keys(`${redisSessionPrefix}*`);
-
-  if (keys.length != 0) {
-    await redis.del(keys);
-  }
 };
