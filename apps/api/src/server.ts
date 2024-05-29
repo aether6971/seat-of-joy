@@ -76,7 +76,6 @@ export const createServer = async (): Promise<{
             .where(or(eq(users.googleId, id), eq(users.email, email.value)))
         )[0];
         if (!user) {
-          console.log("yeah?");
           await db.insert(users).values({
             email: email.value,
             googleId: id,
@@ -120,7 +119,7 @@ export const createServer = async (): Promise<{
     .use(
       cors({
         credentials: true,
-        origin: "http://localhost:3000",
+        origin: process.env.FRONTEND_URL,
       })
     )
     .use(passport.initialize());
@@ -136,9 +135,7 @@ export const createServer = async (): Promise<{
       session: false,
     }),
     function (req, res) {
-      console.log((req as any).user);
       (req.session as Session).userId = (req.user as any).userId;
-      console.log((req.session as any).userId);
       res.redirect("http://localhost:4000/graphql");
     }
   );

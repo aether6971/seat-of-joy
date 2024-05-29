@@ -1,4 +1,4 @@
-import { boolean, pgTable, serial, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { v4 as uuid } from "uuid";
 
 export const users = pgTable("users", {

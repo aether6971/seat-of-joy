@@ -5,7 +5,13 @@ import React, { ReactNode, useEffect, useState } from "react";
 import classNames from "classnames";
 import { Arrow } from "../icons/left-arrow";
 
-export const Header = () => {
+export const Header = ({
+  invisible,
+  sticky,
+}: {
+  invisible: boolean;
+  sticky: boolean;
+}) => {
   const [open, setOpen] = useState<boolean | undefined>(undefined);
   const [isVisible, setIsVisible] = useState(false);
   const handleScroll = () => {
@@ -16,7 +22,6 @@ export const Header = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      console.log(open);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -24,15 +29,22 @@ export const Header = () => {
   return (
     <header
       className={classNames(
-        "w-full block fixed z-20 transition-all duration-500",
-        isVisible && !open
-          ? "bg-white text-dark fill-dark"
-          : "bg-transparent text-white border-white fill-white"
+        "w-full block z-20 transition-all duration-500",
+        sticky ? "fixed" : "",
+        invisible
+          ? isVisible && !open
+            ? "bg-white text-dark fill-dark"
+            : "bg-transparent text-white border-white fill-white"
+          : "bg-white text-dark fill-dark"
       )}
     >
       <nav className="max-w-[92.5rem] my-0 mx-auto py-[1.25rem] px-[1.69rem] flex justify-between items-center">
         <Link className="w-[10.375rem] h-[2.31rem]" href={"/"}>
-          <Logo className={isVisible ? "fill-dark" : "fill-white"} />
+          <Logo
+            className={
+              invisible ? (isVisible ? "fill-dark" : "fill-white") : "fill-dark"
+            }
+          />
         </Link>
 
         <div
@@ -47,21 +59,29 @@ export const Header = () => {
             className={classNames(
               "block w-[26px] h-0.5 bg-black transition-all duration-30  ease-in-out mb-[5px] origin-mid",
               open ? "rotate-45" : "",
-              isVisible && !open ? "bg-dark" : "bg-white"
+              invisible
+                ? isVisible && !open
+                  ? "bg-dark"
+                  : "bg-white"
+                : "bg-dark"
             )}
           ></span>
           <span
             className={classNames(
               "block w-[26px] h-0.5 bg-black transition-all duration-300 ease-in-out mb-[5px] opactiy-100 origin-mid",
               open ? "opacity-0" : "",
-              isVisible ? "bg-dark" : "bg-white"
+              invisible ? (isVisible ? "bg-dark" : "bg-white") : "bg-dark"
             )}
           ></span>
           <span
             className={classNames(
               "block w-[26px] h-0.5 bg-black transition-all duration-300 ease-in-out origin-mid",
               open ? "rotate-[-45deg]" : "",
-              isVisible ? "bg-dark" : "bg-white"
+              invisible
+                ? isVisible && !open
+                  ? "bg-dark"
+                  : "bg-white"
+                : "bg-dark"
             )}
           ></span>
         </div>
@@ -81,7 +101,7 @@ export const Header = () => {
       </nav>
       <div
         className={classNames(
-          "opacity-0 invisible absolute w-[100%] h-[100vh] flex flex-col items-center text-inherit left-[50%] top-0 translate-x-[-50%] bg-dark lg:hidden",
+          "opacity-0 invisible absolute w-full h-screen flex flex-col items-center text-inherit left-[50%] top-0 translate-x-[-50%] bg-dark lg:hidden",
           open != null ? (open ? "animate-fade-in" : "animate-fade-out") : ""
         )}
       >

@@ -42,9 +42,8 @@ export type MutationForgotPasswordChangeArgs = {
 
 
 export type MutationLoginArgs = {
-  email?: InputMaybe<Scalars['String']['input']>;
+  email: Scalars['String']['input'];
   password: Scalars['String']['input'];
-  username?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -199,7 +198,7 @@ export type ErrorResolvers<ContextType = Context, ParentType extends ResolversPa
 
 export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   forgotPasswordChange?: Resolver<ResolversTypes['ResponseType'], ParentType, ContextType, RequireFields<MutationForgotPasswordChangeArgs, 'key' | 'newPassword'>>;
-  login?: Resolver<ResolversTypes['ResponseType'], ParentType, ContextType, RequireFields<MutationLoginArgs, 'password'>>;
+  login?: Resolver<ResolversTypes['ResponseType'], ParentType, ContextType, RequireFields<MutationLoginArgs, 'email' | 'password'>>;
   logout?: Resolver<ResolversTypes['ResponseType'], ParentType, ContextType>;
   logoutAll?: Resolver<ResolversTypes['ResponseType'], ParentType, ContextType>;
   register?: Resolver<ResolversTypes['ResponseType'], ParentType, ContextType, RequireFields<MutationRegisterArgs, 'email' | 'password' | 'username'>>;

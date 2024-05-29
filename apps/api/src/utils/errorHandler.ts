@@ -1,18 +1,18 @@
 export const __ERRORCODES__ = {
   EmailAlreadyExists: {
     code: 409,
-    path: "email",
+    path: "Email",
     message: "Email already exists",
   },
   UsernameAlreadyExists: {
     code: 409,
-    path: "username",
+    path: "Username",
     message: "Username already exists",
   },
-  UsernameOrEmailRequired: {
+  EmailRequired: {
     code: 400,
-    path: "Username/Email",
-    message: "Username or email is required to login",
+    path: "Email",
+    message: "Email is required to login",
   },
   AccountLocked: {
     code: 403,
@@ -21,7 +21,7 @@ export const __ERRORCODES__ = {
   },
   ConfirmEmail: {
     code: 403,
-    path: "User",
+    path: "Email",
     message: "Please confirm your email.",
   },
   BadPassword: {
@@ -31,7 +31,7 @@ export const __ERRORCODES__ = {
   },
   NoUserWithEmail: {
     code: 404,
-    path: "User",
+    path: "Email",
     message: "No user with given mail.",
   },
   InvalidPasskey: {

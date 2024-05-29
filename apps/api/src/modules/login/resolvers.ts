@@ -8,23 +8,15 @@ import { __ERRORCODES__ } from "../../utils/errorHandler";
 
 export const LoginResolvers: Resolvers = {
   Mutation: {
-    login: async (
-      _,
-      { password, email, username },
-      { session, redis, req }
-    ) => {
+    login: async (_, { password, email }, { session, redis, req }) => {
       let identifier;
-      if (!username && email) {
-        identifier = eq(users.email, email);
-      } else if (!email && username) {
-        identifier = eq(users.username, username);
-      } else if (email && username) {
+      if (email) {
         identifier = eq(users.email, email);
       } else {
         return {
           response: {
             success: false,
-            errors: [__ERRORCODES__.UsernameOrEmailRequired],
+            errors: [__ERRORCODES__.EmailRequired],
           },
         };
       }

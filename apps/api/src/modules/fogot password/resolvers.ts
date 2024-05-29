@@ -42,7 +42,6 @@ export const ForgotResolvers: Resolvers = {
     },
     forgotPasswordChange: async (_, { key, newPassword }, { redis }) => {
       const userId = (await redis.get(`${redisPassChangePrefix}${key}`)) || "";
-      console.log(`${redisPassChangePrefix}${key}`);
       if (!userId) {
         return {
           response: {

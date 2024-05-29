@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Provider } from "../components/QueryProvider";
 
 const font = localFont({ src: "../../public/font.woff" });
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }
